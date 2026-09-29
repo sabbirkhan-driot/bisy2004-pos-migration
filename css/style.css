@@ -1,0 +1,290 @@
+/* base styles for the pos migration site */
+
+:root {
+  --ink: #16181d;
+  --paper: #ffffff;
+  --mist: #f4f5f7;
+  --line: #d7dadf;
+  --slate: #5b6068;
+  --accent: #2b3a55; /* used only for links and the active nav */
+  --maxw: 70rem;
+  --readw: 42rem;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* skip link for keyboard use */
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: .5rem .75rem;
+  z-index: 20;
+}
+.skip:focus { left: .5rem; top: .5rem; }
+
+a { color: var(--accent); }
+a:hover { color: var(--ink); }
+
+/* header and nav */
+.site-head {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+.head-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  gap: 1rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+}
+.brand-mark {
+  display: inline-block;
+  border: 1.5px solid var(--ink);
+  padding: .1rem .4rem;
+  font-size: .8rem;
+  letter-spacing: .04em;
+}
+.brand-text { font-size: 1rem; }
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  margin: 0;
+  padding: 0;
+}
+.nav a {
+  display: inline-block;
+  padding: .35rem 0;
+  color: var(--slate);
+  text-decoration: none;
+  font-size: .95rem;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--ink); }
+.nav a.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: .4rem .7rem;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+/* page head */
+.page-head {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
+}
+.sec-num {
+  margin: 0 0 .4rem;
+  color: var(--slate);
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.page-head h1 {
+  margin: 0 0 .5rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.owner {
+  margin: 0 0 .75rem;
+  color: var(--slate);
+  font-size: .9rem;
+}
+.lead { max-width: var(--readw); }
+
+/* content blocks */
+.block { margin: 0 0 2.75rem; }
+.block h2 {
+  font-size: 1.25rem;
+  margin: 0 0 .75rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--line);
+}
+.block p { max-width: var(--readw); }
+.note {
+  color: var(--slate);
+  font-size: .95rem;
+}
+
+/* placeholders that get replaced later */
+.ph {
+  color: var(--slate);
+  background: var(--mist);
+  border-left: 3px dotted var(--line);
+  padding: .6rem .8rem;
+  margin: 0 0 .8rem;
+  font-style: italic;
+}
+
+/* the at a glance list */
+.facts {
+  margin: 0 0 .75rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.facts > div {
+  display: flex;
+  gap: 1rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.facts dt {
+  flex: 0 0 11rem;
+  font-weight: 700;
+}
+.facts dd { margin: 0; }
+
+/* home section index */
+.index-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: .75rem;
+}
+.index-grid a {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  border: 1px solid var(--line);
+  padding: .8rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper);
+}
+.index-grid a:hover { border-color: var(--ink); }
+.index-grid span {
+  color: var(--slate);
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+/* figures and image slots */
+.fig { margin: 0 0 1.5rem; }
+.slot {
+  position: relative;
+  border: 1px dashed var(--line);
+  background: var(--mist);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.slot img { max-width: 100%; height: auto; display: block; }
+.slot.has-img {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  min-height: 0;
+  padding: 0;
+}
+.slot.has-img .slot-label { display: none; }
+.slot-label {
+  color: var(--slate);
+  font-size: .9rem;
+}
+figcaption {
+  margin-top: .5rem;
+  font-size: .95rem;
+}
+
+/* footer */
+.site-foot {
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  padding: 2rem 0;
+  background: var(--mist);
+}
+.foot-title { font-weight: 700; margin: 0 0 .4rem; }
+.foot-group { margin: 0 0 .4rem; }
+.foot-meta { color: var(--slate); font-size: .9rem; margin: 0 0 .8rem; }
+.foot-ph { max-width: var(--readw); }
+
+/* small screens */
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-block; }
+  .nav {
+    display: none;
+    width: 100%;
+    order: 3;
+  }
+  .nav.open { display: block; }
+  .nav ul { flex-direction: column; gap: 0; }
+  .nav a {
+    display: block;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a.active { border-bottom-color: var(--line); padding-left: .5rem; border-left: 3px solid var(--accent); }
+  .head-inner { flex-wrap: wrap; }
+  .page-head h1 { font-size: 1.6rem; }
+  .facts > div { flex-direction: column; gap: .1rem; }
+  .facts dt { flex-basis: auto; }
+}
+
+/* keep focus visible */
+a:focus, button:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto; }
+}
+
+/* tables for register and metrics */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  font-size: .95rem;
+}
+.data-table th, .data-table td {
+  border: 1px solid var(--line);
+  padding: .5rem .6rem;
+  text-align: left;
+  vertical-align: top;
+}
+.data-table th { background: var(--mist); font-weight: 700; }
+.data-table tr:nth-child(even) td { background: #fafbfc; }
